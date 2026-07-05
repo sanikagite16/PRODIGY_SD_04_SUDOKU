@@ -1,0 +1,1575 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SudokuVerse</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="icon" href="favicon.png" type="image/png">
+
+</head>
+
+<body>
+   <!-- ================= SPLASH SCREEN ================= -->
+
+<div id="splash-screen">
+
+    <div class="logo-container">
+
+        <div class="splash-logo">
+    <i class="fa-solid fa-puzzle-piece"></i>
+</div>
+
+        <h1 class="game-title">SudokuVerse</h1>
+
+        <p class="tagline">
+
+Train Your Mind. Master the Grid.
+
+</p>
+
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+
+       <p id="loading-text">0%</p>
+
+    </div>
+
+</div>
+
+
+<!-- ================= WELCOME SCREEN ================= -->
+
+<div id="welcome-screen">
+
+    <div class="welcome-box">
+
+        <div class="welcome-logo">
+            <i class="fa-solid fa-puzzle-piece"></i>
+        </div>
+
+        <h1>Welcome to SudokuVerse</h1>
+
+        <p>
+
+Let's begin your Sudoku adventure! 🧩
+
+Create your profile to save your progress.
+
+</p>
+
+        <input
+            type="text"
+            id="name-input"
+            placeholder="Enter your name">
+
+        <button id="continue-btn">
+
+            Continue
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- ================= HOME SCREEN ================= -->
+
+<div id="home-screen" class="hidden">
+
+    <div class="dashboard">
+
+<header class="navbar">
+
+<div class="logo">
+
+<i class="fa-solid fa-puzzle-piece"></i>
+
+<span>SudokuVerse</span>
+
+</div>
+
+<div class="nav-right">
+
+<button id="settings-btn">
+
+<i class="fa-solid fa-gear"></i>
+
+</button>
+
+</div>
+
+</header>
+
+
+
+<div class="dashboard-container">
+
+<div class="left-panel">
+
+<div class="welcome-card">
+
+<div>
+
+<h1>
+
+Welcome Back,
+
+</h1>
+
+<h2 id="player-name">
+
+Player
+
+</h2>
+
+<p id="player-level">
+
+Level 1 • Beginner
+
+</p>
+
+</div>
+
+<div class="profile-circle" id="profile-circle">
+
+P
+
+</div>
+
+</div>
+
+
+<div class="challenge-card">
+
+    <div class="challenge-info">
+
+        <h3>🔥 Daily Challenge</h3>
+
+        <p id="daily-difficulty">
+            Loading Challenge...
+        </p>
+
+        <small id="daily-reward">
+            Reward: +50 XP
+        </small>
+
+    </div>
+
+    <button id="daily-play">
+
+        PLAY NOW
+
+    </button>
+
+</div>
+
+<div class="stats">
+
+<div class="stat-box">
+
+<h2 id="xp-value">0</h2>
+
+<p>XP</p>
+
+</div>
+
+<div class="stat-box">
+
+<h2 id="games-value">0</h2>
+
+<p>Games</p>
+
+</div>
+
+<div class="stat-box">
+
+<h2 id="streak-value">0</h2>
+
+<p>Streak</p>
+
+</div>
+
+</div>
+
+
+
+<div class="menu-grid">
+    
+<button class="game-card" id="play-game">
+
+<i class="fa-solid fa-play"></i>
+
+<span>Play Game</span>
+
+</button>    
+
+<button class="game-card" id="ai-solver">
+
+<i class="fa-solid fa-robot"></i>
+
+<span>AI Solver</span>
+
+</button>
+
+<button class="game-card" id="leaderboard-btn">
+
+<i class="fa-solid fa-ranking-star"></i>
+
+<span>Leaderboard</span>
+
+</button>
+
+<button class="game-card" id="statistics-btn">
+
+<i class="fa-solid fa-chart-line"></i>
+
+<span>Statistics</span>
+
+</button>
+
+<button class="game-card" id="achievement-btn">
+
+<i class="fa-solid fa-trophy"></i>
+
+<span>Achievements</span>
+
+</button>
+
+<button class="game-card" id="themes-btn">
+
+<i class="fa-solid fa-palette"></i>
+
+<span>Themes</span>
+
+</button>
+
+</div>
+
+</div>
+
+
+
+<div class="right-panel">
+
+<div class="sudoku-preview">
+
+<div class="preview-board">
+
+</div>
+
+</div>
+
+</div>
+
+</div>   <!-- dashboard-container -->
+
+</div>   <!-- dashboard -->
+
+</div> <!-- home-screen -->
+
+<div id="game-screen" class="hidden">
+
+    <header class="game-header">
+
+        <button id="back-home">
+            <i class="fa-solid fa-arrow-left"></i>
+        </button>
+
+        <h2>SudokuVerse</h2>
+
+    </header>
+
+    <div class="difficulty-box">
+
+        <h2>Select Difficulty</h2>
+
+        <button class="difficulty easy">Easy</button>
+        <button class="difficulty medium">Medium</button>
+        <button class="difficulty hard">Hard</button>
+        <button class="difficulty expert">Expert</button>
+
+    </div>
+
+    <!-- ================= AI SOLVER SCREEN ================= -->
+
+<div id="sudoku-container" class="hidden">
+
+    <div class="game-info">
+
+        <div id="game-level">Easy</div>
+
+        <div id="timer">00:00</div>
+
+    </div>
+
+    <div id="sudoku-board">
+
+    </div>
+
+    <div class="game-controls">
+
+        <button id="hint-btn">
+            💡 Hint
+        </button>
+
+        <button id="erase-btn">
+            🧹 Erase
+        </button>
+
+        <button id="undo-btn">
+            ↩ Undo
+        </button>
+
+        <button id="finish-btn">
+        ✅ Finish
+        </button>
+
+    </div>
+
+    <div id="number-pad">
+
+<button class="num-btn">1</button>
+<button class="num-btn">2</button>
+<button class="num-btn">3</button>
+<button class="num-btn">4</button>
+<button class="num-btn">5</button>
+<button class="num-btn">6</button>
+<button class="num-btn">7</button>
+<button class="num-btn">8</button>
+<button class="num-btn">9</button>
+
+</div>
+
+</div>
+</div>
+
+<div id="solver-screen" class="hidden">
+
+<header class="game-header">
+
+<button id="solver-back">
+
+<i class="fa-solid fa-arrow-left"></i>
+
+</button>
+
+<h2>
+
+SudokuVerse AI
+
+</h2>
+
+</header>
+
+<div class="difficulty-box">
+
+<h2>
+
+AI Sudoku Solver
+
+</h2>
+
+<p>
+
+Enter any Sudoku puzzle below.
+
+Use 1–9.
+
+Leave empty cells blank.
+
+</p>
+
+<div id="solver-board">
+
+</div>
+
+<div class="solver-buttons">
+
+<button id="solve-ai">
+
+🤖 Solve
+
+</button>
+
+<button id="reset-ai">
+
+🧹 Reset
+
+</button>
+
+</div>
+
+<div id="ai-status">
+
+</div>
+
+</div>
+</div>
+
+<!-- ================= EDIT PROFILE POPUP ================= -->
+
+<div id="edit-popup">
+
+    <div class="edit-box">
+
+        <h2>Edit Profile</h2>
+
+        <p>Update your display name</p>
+
+        <input
+        type="text"
+        id="edit-name-input"
+        placeholder="Enter new name">
+
+        <div class="edit-buttons">
+
+            <button id="cancel-edit">
+
+                Cancel
+
+            </button>
+
+            <button id="save-edit">
+
+                Save
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div id="message-popup" class="popup">
+
+    <div class="popup-box">
+
+        <h2 id="message-title"></h2>
+
+        <p id="message-text"></p>
+
+        <div id="theme-options" style="display:none; margin-top:20px;">
+
+    <button class="theme-choice" data-theme="purple">
+        🟣 Purple Galaxy
+    </button>
+
+    <button class="theme-choice" data-theme="ocean">
+        🌊 Ocean Blue
+    </button>
+
+    <button class="theme-choice" data-theme="emerald">
+        🟢 Emerald Green
+    </button>
+
+    <button class="theme-choice" data-theme="sunset">
+    🌅 Sunset Orange
+    </button>
+
+</div>
+
+        <button id="close-message">
+
+            OK
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- ================= GAME GUIDE POPUP ================= -->
+
+<div id="guide-popup" class="popup">
+
+    <div class="guide-box">
+
+        <div class="guide-header">
+
+            <h2>📖 SudokuVerse Game Guide</h2>
+
+            <button id="close-guide">✖</button>
+
+        </div>
+
+        <div id="guide-content">
+
+    <section class="guide-section">
+
+        <h3>🎯 Welcome to SudokuVerse!</h3>
+
+        <p>
+            SudokuVerse is an interactive Sudoku game designed to provide a fun,
+            challenging and rewarding experience for players of all skill levels.
+            Every puzzle you complete earns XP, helps you level up, unlocks
+            achievements and improves your personal statistics.
+        </p>
+
+        <p>
+            This guide explains every feature, scoring rule and gameplay mechanic
+            used in SudokuVerse.
+        </p>
+
+    </section>
+
+    <hr>
+
+    <section class="guide-section">
+
+<h3>🎯 Objective</h3>
+
+<p>
+
+Fill every empty cell so that:
+
+</p>
+
+<ul>
+
+<li>Each row contains the numbers <b>1–9</b> exactly once.</li>
+
+<li>Each column contains the numbers <b>1–9</b> exactly once.</li>
+
+<li>Each 3×3 box contains the numbers <b>1–9</b> exactly once.</li>
+
+<li>Press <b>Finish</b> to verify your completed puzzle.</li>
+
+<li>Incorrect puzzles will not be accepted.</li>
+
+</ul>
+
+</section>
+
+<hr>
+
+<section class="guide-section">
+
+<h3>🎮 Game Modes</h3>
+
+<table class="guide-table">
+
+<tr>
+
+<th>Mode</th>
+
+<th>Description</th>
+
+</tr>
+
+<tr>
+
+<td>▶ Play Game</td>
+
+<td>Choose any difficulty and solve Sudoku puzzles.</td>
+
+</tr>
+
+<tr>
+
+<td>🔥 Daily Challenge</td>
+
+<td>Complete today's special puzzle to earn bonus XP.</td>
+
+</tr>
+
+<tr>
+
+<td>🤖 AI Solver</td>
+
+<td>Enter any valid Sudoku puzzle and let the AI solve it instantly.</td>
+
+</tr>
+
+</table>
+
+</section>
+
+<hr>
+<section class="guide-section">
+
+<h3>📊 Difficulty & XP Rewards</h3>
+
+<p>
+
+Every completed Sudoku puzzle rewards XP based on its difficulty.
+
+</p>
+
+<table class="guide-table">
+
+<tr>
+
+<th>Difficulty</th>
+
+<th>Base XP</th>
+
+<th>Description</th>
+
+</tr>
+
+<tr>
+
+<td>🟢 Easy</td>
+
+<td><b>25 XP</b></td>
+
+<td>Best for beginners and quick practice.</td>
+
+</tr>
+
+<tr>
+
+<td>🟡 Medium</td>
+
+<td><b>50 XP</b></td>
+
+<td>Balanced challenge.</td>
+
+</tr>
+
+<tr>
+
+<td>🟠 Hard</td>
+
+<td><b>75 XP</b></td>
+
+<td>Requires stronger solving skills.</td>
+
+</tr>
+
+<tr>
+
+<td>🔴 Expert</td>
+
+<td><b>100 XP</b></td>
+
+<td>Designed for experienced players.</td>
+
+</tr>
+
+</table>
+
+<p>
+
+<b>Note:</b>
+
+This is your Base XP.
+
+Hint penalties and Daily Challenge bonuses are applied afterwards.
+
+</p>
+
+</section>
+
+<hr>
+
+<section class="guide-section">
+
+<h3>🔥 Daily Challenge</h3>
+
+<p>
+
+A unique Daily Challenge is available every day.
+
+Completing it rewards you with extra bonus XP in addition to your puzzle XP.
+
+</p>
+
+<table class="guide-table">
+
+<tr>
+<th>Day</th>
+<th>Difficulty</th>
+<th>Bonus XP</th>
+</tr>
+
+<tr>
+<td>Sunday</td>
+<td>🟢 Easy</td>
+<td>+25 XP</td>
+</tr>
+
+<tr>
+<td>Monday</td>
+<td>🟡 Medium</td>
+<td>+50 XP</td>
+</tr>
+
+<tr>
+<td>Tuesday</td>
+<td>🟠 Hard</td>
+<td>+75 XP</td>
+</tr>
+
+<tr>
+<td>Wednesday</td>
+<td>🔴 Expert</td>
+<td>+100 XP</td>
+</tr>
+
+<tr>
+<td>Thursday</td>
+<td>🟡 Medium</td>
+<td>+50 XP</td>
+</tr>
+
+<tr>
+<td>Friday</td>
+<td>🟠 Hard</td>
+<td>+75 XP</td>
+</tr>
+
+<tr>
+<td>Saturday</td>
+<td>🟢 Easy</td>
+<td>+25 XP</td>
+</tr>
+
+</table>
+
+<p>
+
+<b>Bonus XP</b> is added after your puzzle XP has been calculated.
+
+</p>
+
+</section>
+
+<hr>
+<section class="guide-section">
+
+<h3>💡 Hint System</h3>
+
+<p>
+
+Hints help you solve difficult puzzles, but using them reduces the XP earned from the puzzle.
+
+</p>
+
+<table class="guide-table">
+
+<tr>
+<th>Hints Used</th>
+<th>Puzzle XP Awarded</th>
+</tr>
+
+<tr>
+<td>0</td>
+<td>100% of Base XP</td>
+</tr>
+
+<tr>
+<td>1</td>
+<td>90% of Base XP</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>80% of Base XP</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>70% of Base XP</td>
+</tr>
+
+<tr>
+<td>4 or more</td>
+<td>60% of Base XP (Minimum)</td>
+</tr>
+
+</table>
+
+<h4>Example</h4>
+
+<p>
+
+Easy Puzzle = <b>25 XP</b>
+
+</p>
+
+<p>
+
+Example: The player used <b>5 hints</b>.
+
+</p>
+
+<p>
+
+Puzzle XP = <b>15 XP</b>
+
+</p>
+
+<p>
+
+Puzzle XP never drops below <b>60%</b> of the Base XP, even if more than 4 hints are used.
+
+</p>
+
+<p>
+
+If it is today's Daily Challenge:
+
+</p>
+
+<p>
+
+15 XP + 25 Bonus XP = <b>40 XP Total</b>
+
+</p>
+
+</section>
+
+<hr>
+
+<section class="guide-section">
+
+<h3>⭐ Level System</h3>
+
+<p>
+
+As you earn XP, you level up and unlock higher ranks.
+
+Every time you reach a new level, a Level Up notification appears automatically.
+
+</p>
+
+<table class="guide-table">
+
+<tr>
+<th>Total XP</th>
+<th>Level</th>
+<th>Rank</th>
+</tr>
+
+<tr>
+<td>0 – 99</td>
+<td>Level 1</td>
+<td>🌱 Beginner</td>
+</tr>
+
+<tr>
+<td>100 – 249</td>
+<td>Level 2</td>
+<td>⭐ Learner</td>
+</tr>
+
+<tr>
+<td>250 – 499</td>
+<td>Level 3</td>
+<td>🚀 Skilled</td>
+</tr>
+
+<tr>
+<td>500 – 799</td>
+<td>Level 4</td>
+<td>🔥 Advanced</td>
+</tr>
+
+<tr>
+<td>800 – 1199</td>
+<td>Level 5</td>
+<td>👑 Expert</td>
+</tr>
+
+<tr>
+<td>1200+</td>
+<td>Level 6</td>
+<td>🏆 Sudoku Master</td>
+</tr>
+
+</table>
+
+</section>
+
+<hr>
+<section class="guide-section">
+
+<h3>📈 Statistics</h3>
+
+<p>
+
+SudokuVerse automatically tracks your performance.
+
+</p>
+
+<table class="guide-table">
+
+<tr>
+<th>Statistic</th>
+<th>Description</th>
+</tr>
+
+<tr>
+<td>⭐ Total XP</td>
+<td>Total experience earned from all completed puzzles.</td>
+</tr>
+
+<tr>
+<td>🎮 Games Played</td>
+<td>Total number of Sudoku games completed.</td>
+</tr>
+
+<tr>
+<td>🔥 Current Streak</td>
+<td>Number of consecutive completed games.</td>
+</tr>
+
+<tr>
+<td>💡 Total Hints Used</td>
+<td>Total hints used across all games.</td>
+</tr>
+
+<tr>
+<td>⏱ Best Time</td>
+<td>Your fastest completed Sudoku puzzle.</td>
+</tr>
+
+</table>
+
+</section>
+
+<hr>
+<section class="guide-section">
+
+<h3>🏆 Achievements</h3>
+
+<p>
+
+Achievements are unlocked by completing milestones throughout the game.
+
+</p>
+
+<table class="guide-table">
+
+<tr>
+<th>Achievement</th>
+<th>Unlock Requirement</th>
+</tr>
+
+<tr>
+<td>🥇 First Victory</td>
+<td>Complete your first Sudoku puzzle.</td>
+</tr>
+
+<tr>
+<td>🎮 Sudoku Enthusiast</td>
+<td>Complete 10 Sudoku games.</td>
+</tr>
+
+<tr>
+<td>🔥 Winning Streak</td>
+<td>Reach a streak of 5 games.</td>
+</tr>
+
+<tr>
+<td>⭐ XP Collector</td>
+<td>Earn 500 Total XP.</td>
+</tr>
+
+<tr>
+<td>👑 Sudoku Champion</td>
+<td>Earn 1000 Total XP.</td>
+</tr>
+
+<tr>
+<td>⚡ Speed Runner</td>
+<td>Set your fastest puzzle completion time.</td>
+</tr>
+
+<tr>
+<td>💡 Hint Master</td>
+<td>Complete a puzzle without using any hints.</td>
+</tr>
+
+</table>
+
+</section>
+
+<hr>
+<section class="guide-section">
+
+<h3>⭐ Level System</h3>
+
+<p>
+
+As you earn XP by solving Sudoku puzzles, your player level increases automatically.
+
+Every new level unlocks a higher player rank and displays a special Level Up notification.
+
+</p>
+
+<table class="guide-table">
+
+<tr>
+
+<th>Total XP</th>
+
+<th>Level</th>
+
+<th>Player Rank</th>
+
+</tr>
+
+<tr>
+
+<td>0 – 99 XP</td>
+
+<td>Level 1</td>
+
+<td>🌱 Beginner</td>
+
+</tr>
+
+<tr>
+
+<td>100 – 249 XP</td>
+
+<td>Level 2</td>
+
+<td>⭐ Learner</td>
+
+</tr>
+
+<tr>
+
+<td>250 – 499 XP</td>
+
+<td>Level 3</td>
+
+<td>🚀 Skilled</td>
+
+</tr>
+
+<tr>
+
+<td>500 – 799 XP</td>
+
+<td>Level 4</td>
+
+<td>🔥 Advanced</td>
+
+</tr>
+
+<tr>
+
+<td>800 – 1199 XP</td>
+
+<td>Level 5</td>
+
+<td>👑 Expert</td>
+
+</tr>
+
+<tr>
+
+<td>1200 XP and above</td>
+
+<td>Level 6</td>
+
+<td>🏆 Sudoku Master</td>
+
+</tr>
+
+</table>
+
+<p>
+
+Whenever your Total XP crosses one of these milestones, a Level Up popup appears automatically.
+
+</p>
+
+</section>
+
+<hr>
+
+<section class="guide-section">
+
+<h3>📊 Statistics</h3>
+
+<p>
+
+SudokuVerse automatically records your game progress.
+
+</p>
+
+<table class="guide-table">
+
+<tr>
+
+<th>Statistic</th>
+
+<th>Meaning</th>
+
+</tr>
+
+<tr>
+
+<td>⭐ Total XP</td>
+
+<td>Total XP earned from every completed Sudoku.</td>
+
+</tr>
+
+<tr>
+
+<td>🎮 Games Played</td>
+
+<td>Total completed Sudoku games.</td>
+
+</tr>
+
+<tr>
+
+<td>🔥 Streak</td>
+
+<td>Number of consecutive completed puzzles.</td>
+
+</tr>
+
+<tr>
+
+<td>💡 Total Hints Used</td>
+
+<td>Total hints used across all games.</td>
+
+</tr>
+
+<tr>
+
+<td>⏱ Best Time</td>
+
+<td>Fastest Sudoku completion time.</td>
+
+</tr>
+
+</table>
+
+<p>
+
+These statistics are automatically saved and restored whenever you open SudokuVerse again.
+
+</p>
+
+</section>
+
+<hr>
+<section class="guide-section">
+
+<h3>🏆 Achievements</h3>
+
+<p>
+
+Achievements are unlocked by reaching important milestones while playing SudokuVerse.
+
+</p>
+
+<table class="guide-table">
+
+<tr>
+
+<th>Achievement</th>
+
+<th>Requirement</th>
+
+</tr>
+
+<tr>
+
+<td>🥇 First Victory</td>
+
+<td>Complete your first Sudoku puzzle.</td>
+
+</tr>
+
+<tr>
+
+<td>🎮 Sudoku Enthusiast</td>
+
+<td>Complete 10 Sudoku games.</td>
+
+</tr>
+
+<tr>
+
+<td>🔥 Winning Streak</td>
+
+<td>Reach a streak of 5 games.</td>
+
+</tr>
+
+<tr>
+
+<td>⭐ XP Collector</td>
+
+<td>Earn 500 Total XP.</td>
+
+</tr>
+
+<tr>
+
+<td>👑 Sudoku Champion</td>
+
+<td>Earn 1000 Total XP.</td>
+
+</tr>
+
+<tr>
+
+<td>⚡ Speed Runner</td>
+
+<td>Complete a puzzle in your fastest recorded time.</td>
+
+</tr>
+
+<tr>
+
+<td>💡 Hint Master</td>
+
+<td>Complete a Sudoku puzzle without using any hints.</td>
+
+</tr>
+
+</table>
+
+</section>
+
+<hr>
+<section class="guide-section">
+
+<h3>🤖 AI Solver</h3>
+
+<p>
+
+The AI Solver allows you to instantly solve any valid Sudoku puzzle.
+
+It is designed to help players learn Sudoku strategies, verify answers and understand difficult puzzles.
+
+</p>
+
+<table class="guide-table">
+
+<tr>
+<th>Feature</th>
+<th>Description</th>
+</tr>
+
+<tr>
+<td>🧩 Solve Puzzle</td>
+<td>Instantly generates the correct Sudoku solution.</td>
+</tr>
+
+<tr>
+<td>📖 Learn</td>
+<td>Compare your solution with the AI-generated solution.</td>
+</tr>
+
+<tr>
+<td>✔ Verify</td>
+<td>Check whether a Sudoku puzzle is valid.</td>
+</tr>
+
+<tr>
+<td>⚠ XP Reward</td>
+<td>Using AI Solver does <b>not</b> award XP or achievements.</td>
+</tr>
+
+</table>
+
+</section>
+
+<hr>
+<section class="guide-section">
+
+<h3>⚠ Important Rules</h3>
+
+<ul>
+
+<li>✔ XP is awarded only after successfully completing a Sudoku puzzle.</li>
+
+<li>✔ Incorrect Sudoku solutions do not receive XP.</li>
+
+<li>✔ Daily Challenge Bonus XP is added after Puzzle XP is calculated.</li>
+
+<li>✔ Using hints reduces Puzzle XP.</li>
+
+<li>✔ Puzzle XP never drops below <b>60%</b> of the Base XP.</li>
+
+<li>✔ Level Up occurs automatically when your Total XP reaches the next level.</li>
+
+<li>✔ Statistics update automatically after every completed game.</li>
+
+<li>✔ AI Solver does not award XP, achievements or increase your streak.</li>
+
+<li>✔ Daily Challenge difficulty changes automatically every day.</li>
+
+<li>✔ All game progress is saved automatically.</li>
+
+</ul>
+
+</section>
+
+<hr>
+<section class="guide-section">
+
+<h3>💡 Pro Tips</h3>
+
+<ul>
+
+<li>🎯 Solve puzzles without hints to earn maximum XP.</li>
+
+<li>🔥 Complete the Daily Challenge every day for bonus rewards.</li>
+
+<li>🏆 Higher difficulty puzzles award more XP.</li>
+
+<li>⭐ Maintain your streak by completing puzzles regularly.</li>
+
+<li>⏱ Try to beat your Best Time with every puzzle.</li>
+
+<li>📈 Earn more XP to unlock higher player levels.</li>
+
+<li>🧠 Practice regularly to improve your Sudoku solving skills.</li>
+
+</ul>
+
+<p>
+
+🎉 <b>Enjoy your Sudoku journey and become the ultimate Sudoku Master!</b>
+
+</p>
+
+</section>
+
+<hr>
+</div>
+
+    </div>
+
+</div>
+
+<!-- ================= WIN POPUP ================= -->
+
+<div id="win-popup" class="popup hidden">
+
+    <div class="popup-box">
+
+        <h1 id="win-title">🎉 Puzzle Completed!</h1>
+        <p>
+
+            You solved the Sudoku successfully.
+
+        </p>
+
+        <div class="win-stats">
+
+            <div class="win-card">
+
+                <h3>Difficulty</h3>
+
+                <span id="win-difficulty">Easy</span>
+
+            </div>
+
+            <div class="win-card">
+
+                <h3>Time</h3>
+
+                <span id="win-time">00:00</span>
+
+            </div>
+
+            <div class="win-card">
+
+                <h3>XP Earned</h3>
+
+                <span><span id="win-xp">+100 XP</span></span>
+
+            </div>
+            <div class="win-card">
+
+    <h3>Hints Used</h3>
+
+    <span id="win-hints">0</span>
+
+</div>
+
+<div class="win-card">
+
+    <h3>Total XP</h3>
+
+    <span id="win-totalxp">0 XP</span>
+
+</div>
+<div class="win-card">
+
+    <h3>Current Level</h3>
+
+    <span id="win-level">
+
+        Level 1 • Beginner
+
+    </span>
+
+        </div>
+        </div>
+
+        <div class="win-buttons">
+
+            <button id="play-again">
+
+                🔄 Play Again
+
+            </button>
+
+            <button id="continue-home">
+
+                🏠 Home
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ================= LEVEL UP POPUP ================= -->
+
+<div id="levelup-popup">
+
+    <div class="levelup-box">
+
+        <div id="level-icon" class="level-icon">⭐</div>
+
+        <h2>LEVEL UP!</h2>
+
+        <p id="levelup-text">
+            Level 2 • Rookie
+        </p>
+
+    </div>
+
+</div>
+
+<!-- ================= RESET PROGRESS POPUP ================= -->
+
+<div id="reset-popup">
+
+    <div class="popup-box">
+
+        <h2>⚠ Reset Progress?</h2>
+
+        <p>
+
+This will permanently erase
+
+all your XP, games and streak.
+
+        </p>
+
+        <div class="popup-buttons">
+
+            <button id="cancel-reset">
+
+Cancel
+
+            </button>
+
+            <button id="confirm-reset">
+
+Reset
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ================= SETTINGS PANEL ================= -->
+
+<div id="settings-panel">
+
+    <div class="settings-header">
+
+        <h2>⚙ Settings</h2>
+
+        <button id="close-settings">✖</button>
+
+    </div>
+
+    <div class="setting-item" id="edit-profile">
+
+👤 Edit Profile
+
+    </div>
+
+<div class="setting-item">
+
+    <span>
+
+        🌙 Dark Mode
+
+    </span>
+
+    <label class="switch">
+
+        <input type="checkbox" id="dark-toggle">
+
+        <span class="slider"></span>
+
+    </label>
+
+</div>
+
+    <div class="setting-item" id="settings-themes">
+
+🎨 Themes
+
+</div>
+
+<div class="setting-item" id="settings-guide">
+
+📖 Game Guide
+
+</div>
+
+    <div class="setting-item" id="settings-reset">
+
+💾 Reset Progress
+
+</div>
+
+    <div class="setting-item" id="settings-about">
+
+ℹ About
+
+</div>
+
+</div>
+
+<!-- ================= PLAY GAME SCREEN ================= -->
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
