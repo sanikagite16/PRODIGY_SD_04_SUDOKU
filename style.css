@@ -2272,17 +2272,13 @@ transform:scale(1.05);
 /* AI BOARD */
 
 #solver-board{
-
     display:grid;
-
     grid-template-columns:repeat(9,1fr);
 
     width:100%;
-
     max-width:460px;
 
-    margin:30px auto;
-
+    box-sizing:border-box;
 }
 
 #solver-board input{
@@ -2705,23 +2701,18 @@ button:active{
 }
 
 .difficulty-box{
-
     width:100%;
-
-    padding:25px;
-
+    max-width:100%;
+    padding:20px;
+    overflow:hidden;
+    box-sizing:border-box;
 }
 
 #solver-board{
-
-    width:95vw;
-
-    max-width:95vw;
-
+    width:100%;
+    max-width:100%;
     margin:25px auto;
-
     display:grid;
-
 }
 
 .solver-buttons{
