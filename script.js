@@ -1407,6 +1407,11 @@ aiButton.onclick=function(){
 
     solverScreen.classList.remove("hidden");
 
+    window.scrollTo({
+        top:0,
+        behavior:"instant"
+    });
+
 }
 
 solverBack.onclick=function(){
