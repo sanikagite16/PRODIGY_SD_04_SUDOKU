@@ -5,6 +5,7 @@
     color .45s,
     border-color .45s,
     box-shadow .45s;
+    -webkit-tap-highlight-color: transparent;
 
 }
 
@@ -1412,9 +1413,9 @@ var(--bg3)
 
     position:absolute;
 
-    left:20px;
+    left:10px;
 
-    top:10px;
+    top:18px;
 
     width:48px;
     height:48px;
@@ -1432,13 +1433,14 @@ var(--bg3)
 
 #solver-screen .game-header h2{
 
-    position:absolute;
+     position:absolute;
 
-    right:5px;
-
-    top:5px;
+    left:50%;
+    transform:translateX(-50%);
 
     margin:0;
+    width:max-content;
+    top:5px;
 
     font-size:36px;
 
@@ -2289,17 +2291,16 @@ transform:scale(1.05);
 /* AI BOARD */
 
 #solver-board{
-
     display:grid;
-
     grid-template-columns:repeat(9,1fr);
 
     width:100%;
-
     max-width:460px;
 
     margin:35px auto;
 
+    justify-self:center;
+    align-self:center;
 }
 
 #solver-board input{
