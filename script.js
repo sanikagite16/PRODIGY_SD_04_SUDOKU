@@ -1435,6 +1435,16 @@ for(let i=0;i<81;i++){
 
     input.classList.add("solve-cell");
 
+    input.onclick=function(){
+
+    document
+    .querySelectorAll(".solve-cell")
+    .forEach(cell=>cell.classList.remove("selected"));
+
+    input.classList.add("selected");
+
+};
+
     input.oninput=function(){
 
         if(!/^[1-9]?$/.test(input.value))
@@ -1974,3 +1984,26 @@ function applyDarkMode(){
     }
 
 }
+
+// ===========================
+// AI NUMBER PAD
+// ===========================
+
+const solverButtons =
+document.querySelectorAll(".solver-num-btn");
+
+solverButtons.forEach(button=>{
+
+    button.onclick=function(){
+
+        const selected =
+        document.querySelector(".solve-cell.selected");
+
+        if(!selected) return;
+
+        selected.value =
+this.textContent.trim();
+
+    };
+
+});

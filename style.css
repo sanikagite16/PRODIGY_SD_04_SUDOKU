@@ -24,6 +24,7 @@
 
 body{
     min-height:100vh;
+    overflow-x:hidden;
 }
 
 /* ==============================
@@ -166,6 +167,7 @@ body{
 #home-screen{
 
     padding:35px;
+    min-height:100vh;
 
 }
 
@@ -430,7 +432,51 @@ width:100%;
 width:100%;
 
 }
+/* ===========================
+   PLAY GAME - MOBILE
+=========================== */
 
+.game-container{
+
+    width:100%;
+
+    max-width:100%;
+
+    padding:12px;
+
+    overflow-x:hidden;
+
+}
+
+.sudoku-board{
+
+    width:100%;
+
+    max-width:420px;
+
+    margin:auto;
+
+}
+
+.number-pad{
+
+    width:100%;
+
+    display:grid;
+
+    grid-template-columns:repeat(9,1fr);
+
+    gap:6px;
+
+}
+
+.number-btn{
+
+    width:100%;
+
+    min-width:0;
+
+}
 }
 
 @keyframes fadeHome{
@@ -459,9 +505,11 @@ transform:translateY(0);
 
 .dashboard{
     width:100%;
+    overflow-x:hidden;
     min-height:100vh;
     padding:12px 40px 60px;
     position:relative;   /* Add this */
+    background:inherit;
 }
 
 .navbar{
@@ -1325,7 +1373,7 @@ transform:translateY(0);
 
 #game-screen{
 
-    min-height:100vh;
+    min-height:100dvh;
 
     background:linear-gradient(
 135deg,
@@ -2262,23 +2310,39 @@ transform:scale(1.05);
 
     box-sizing:border-box;
 
+    padding:0;
+
+    margin:0;
+
+    outline:none;
+
 }
 
 .solve-cell{
 
-width:100%;
+    width:100%;
 
-aspect-ratio:1;
+    aspect-ratio:1;
 
-font-size:22px;
+    padding:0;
 
-border:1px solid #ccc;
+    margin:0;
 
-box-sizing:border-box;
+    outline:none;
 
-text-align:center;
+    border:1px solid #D4D4D8;
 
-outline:none;
+    background:white;
+
+    text-align:center;
+
+    font-size:22px;
+
+    font-weight:600;
+
+    box-sizing:border-box;
+
+    transition:.15s;
 
 }
 
@@ -2328,7 +2392,7 @@ cursor:pointer;
 
 #solver-screen{
 
-    min-height:100vh;
+    min-height:100dvh;
 
     background:linear-gradient(
         135deg,
@@ -2545,3 +2609,232 @@ button:active{
     transform:scale(.96);
 }
 
+
+/*==================================================
+            GAME MOBILE RESPONSIVE
+==================================================*/
+
+@media (max-width:768px){
+
+#game-screen,
+#solver-screen{
+
+    padding:15px;
+
+    overflow-x:hidden;
+
+}
+
+.game-header{
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+}
+
+.game-header h2{
+
+    font-size:24px;
+
+}
+
+.game-info{
+
+    width:100%;
+
+    font-size:18px;
+
+    margin-bottom:15px;
+
+}
+
+#sudoku-board{
+
+    width:95vw;
+
+    max-width:95vw;
+
+    grid-template-columns:repeat(9,1fr);
+
+    grid-template-rows:repeat(9,1fr);
+
+}
+
+.cell{
+
+    width:auto;
+
+    aspect-ratio:1;
+
+    height:auto;
+
+    font-size:20px;
+
+}
+
+.game-controls{
+
+    width:100%;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+}
+
+.game-controls button{
+
+    flex:1;
+
+    min-width:120px;
+
+    padding:14px;
+
+    font-size:16px;
+
+}
+
+#number-pad{
+
+    width:100%;
+
+    gap:6px;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+}
+
+.num-btn{
+
+    width:42px;
+
+    height:42px;
+
+    font-size:18px;
+
+}
+
+.difficulty-box{
+
+    width:100%;
+
+    padding:25px;
+
+}
+
+#solver-board{
+
+    max-width:95vw;
+
+}
+
+.solver-buttons{
+
+    flex-wrap:wrap;
+
+}
+
+.solver-buttons button{
+
+    flex:1;
+
+    min-width:130px;
+
+}
+
+}
+
+/*==========================================
+        AI NUMBER PAD
+==========================================*/
+
+#solver-number-pad{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:10px;
+
+    margin:25px 0;
+
+    flex-wrap:nowrap;
+
+}
+
+.solver-num-btn{
+
+    width:48px;
+
+    height:48px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:white;
+
+    color:#5B21B6;
+
+    font-size:22px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.solve-cell.selected{
+
+    background:#ECE6FF !important;
+
+    border:2px solid #6C3CF0 !important;
+
+}
+
+.solver-num-btn:hover{
+
+    background:#7C3AED;
+
+    color:white;
+
+    transform:translateY(-3px);
+
+}
+
+.solver-num-btn:active{
+
+    transform:scale(.95);
+
+}
+
+@media(max-width:768px){
+
+#solver-number-pad{
+
+    width:100%;
+
+    gap:6px;
+
+    flex-wrap:wrap;
+
+}
+
+.solver-num-btn{
+
+    width:42px;
+
+    height:42px;
+
+    font-size:18px;
+
+}
+
+}
