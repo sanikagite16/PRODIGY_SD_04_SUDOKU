@@ -1459,6 +1459,8 @@ height:48px;
 
     width:450px;
 
+    max-width:100%;
+
     margin:30px auto;
 
     background:rgba(255,255,255,.12);
@@ -1468,6 +1470,8 @@ height:48px;
     border-radius:28px;
 
     padding:40px;
+
+    box-sizing:border-box;
 
     box-shadow:0 20px 40px rgba(0,0,0,.30);
 
@@ -2272,13 +2276,21 @@ transform:scale(1.05);
 /* AI BOARD */
 
 #solver-board{
+
     display:grid;
-    grid-template-columns:repeat(9,1fr);
+
+    grid-template-columns:repeat(9,minmax(0,1fr));
 
     width:100%;
+
     max-width:460px;
 
+    margin:30px auto;
+
     box-sizing:border-box;
+
+    overflow:hidden;
+
 }
 
 #solver-board input{
@@ -2701,18 +2713,29 @@ button:active{
 }
 
 .difficulty-box{
+
     width:100%;
+
     max-width:100%;
-    padding:20px;
-    overflow:hidden;
+
+    padding:18px;
+
     box-sizing:border-box;
+
+    overflow:hidden;
+
+    margin:20px auto;
+
 }
 
 #solver-board{
+
     width:100%;
+
     max-width:100%;
-    margin:25px auto;
-    display:grid;
+
+    margin:20px auto;
+
 }
 
 .solver-buttons{
